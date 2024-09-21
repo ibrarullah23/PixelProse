@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .theam2{
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #181818;
+} */
+
+* {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+
+
+  .theme-bg {
+    @apply bg-white dark:bg-zinc-950 border-gray-500/50
+  }
+
+  .theme-i {
+    @apply dark:bg-slate-100 bg-gray-900 text-white dark:text-zinc-950 theme-shift
+  }
+
+  .theme-text {
+    @apply dark:text-slate-50 text-gray-900 theme-shift
+  }
+
+  .theme-gray {
+    @apply text-gray-600 dark:text-gray-400 theme-shift
+  }
+
+  .theme-bg-gray {
+    @apply dark:bg-zinc-800 bg-gray-100
+  }
+
+  .theme-shift {
+    @apply transition-colors duration-1000
+  }
+
+
+}
+
+.font-title {
+  font-family: "Kanit", sans-serif;
+}
+
+.font-body {
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
+  @apply leading-7 !important
+}
+
+.dd {
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0, 0, 0.3, 1);
+  animation-duration: 600ms;
+}
+
+.font-details {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  /* border-radius: 5px; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+input:-webkit-autofill {
+  /* -webkit-box-shadow: 0 0 0 30px #df0c0c00 inset !important; */
+  -webkit-box-shadow: none !important;
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
+}
+
+.myeditor {
+  @apply theme-text p-3 space-y-3 sm:text-xl text-xl font-body
+}
+
+.myeditor .heading1 {
+  @apply font-bold text-xl
+}
+
+
+
+.cdx-quote {
+  @apply  ml-10 w-3/4 border-0 border-l-4 border-emerald-400 italic font-body !important;
+}
+
+.cdx-quote * {
+  @apply border-none outline-none m-0
+}
+
+#editorjs {
+  @apply theme-bg border-t pt-2  theme-text
+}
+
+.ce-toolbar__plus, .ce-toolbar__settings-btn {
+  @apply hover:theme-bg theme-bg-gray theme-text  border-none
+}
+
+.cdx-quote__text {
+  @apply min-h-fit !important 
+}
+
+.cdx-quote__caption {
+  display: none;
+  height: 0px;
+}
+
+.ce-paragraph , .cdx-list{
+  @apply font-body text-justify text-base sm:text-lg
+}
+
+.ce-block__content h2{
+  @apply font-title text-justify text-xl font-semibold first-letter:uppercase pb-0
+}
+
+.cdx-block {
+  @apply selection:bg-emerald-300 dark:selection:bg-emerald-600
+}
+
+
+
+.ce-code__textarea {
+/* @apply bg-black text-zinc-200 !important */
+  @apply text-white bg-gray-900 rounded-md p-4  resize-y  font-mono overflow-x-auto whitespace-pre-wrap !important;
+}
+
+.ce-code{
+  @apply h-auto !important
+}
+
+.ce-block--selected .ce-block__content {
+  @apply bg-emerald-100 dark:bg-emerald-900 !important
+}
+
+::before[data-empty="true"] {
+  @apply   italic !important
+}
+
+.ce-header[data-placeholder="Code Here"]{
+  @apply bg-red-400
+}
+
+div:empty::before{
+  content: attr(data-placeholder);
+  @apply text-gray-400/50
+}
+
+
