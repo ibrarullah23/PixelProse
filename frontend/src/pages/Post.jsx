@@ -95,9 +95,9 @@ const Post = () => {
                     <div className='max-w-[680px] *:borde mx-auto space-y-5 '>
 
                         <div className="w-max theme-gray hover:underline flex gap-2 mb-2 text-sm font-medium  items-center cursor-pointer"
-                            onClick={() => navigate(`/user/${blog.data.username}`)}>
+                            onClick={() => navigate(`/${blog.data.author.username}`)}>
                             <img className='rounded-full w-[25px] ' src="https://picsum.photos/40" alt='' />
-                            <p className='font-details ' >{blog.data.username}</p>
+                            <p className='font-details ' >{blog.data.author.username}</p>
                         </div>
 
                         <h1 className="text-xl sm:text-3xl md:text-4xl theme-text font-title font-bold mb-2 ">
@@ -110,7 +110,7 @@ const Post = () => {
                             </div>
                             <div className='flex items-center text-base sm:text-lg gap-7 '>
                                 <PostActions post={blog} />
-                                {auth?._id === blog.data.author._id && <button onClick={() => { navigate('/post/edit/' + id) }}>edit</button>}
+                                {/* {auth?._id === blog.data.author._id && <button onClick={() => { navigate('/post/edit/' + id) }}>edit</button>} */}
                             </div>
                         </div>
 

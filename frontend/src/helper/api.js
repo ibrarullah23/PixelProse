@@ -39,3 +39,8 @@ export const updateBlog = async (id, blog) => {
     return data;
 };
 
+export const deleteBlog = async (id) => {
+    const data = await axios.delete(`/api/post/${id}`);
+    return data;
+};
+

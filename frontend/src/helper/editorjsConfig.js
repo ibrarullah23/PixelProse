@@ -1,5 +1,3 @@
-
-import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import Quote from '@editorjs/quote';
 import CodeTool from '@editorjs/code';
@@ -21,3 +19,4 @@ export const editorTools = {
   embed: Embed,
   list: List,
 }
+

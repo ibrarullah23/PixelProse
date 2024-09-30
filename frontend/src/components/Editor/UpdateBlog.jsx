@@ -8,7 +8,7 @@ import List from '@editorjs/list';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { uploadImageToCloudinary } from '../../helper/imageUpload';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createBlog, fetchBlog, updateBlog } from '../../helper/api';
+import {  fetchBlog, updateBlog } from '../../helper/api';
 
 const UpdateBlog = () => {
 
