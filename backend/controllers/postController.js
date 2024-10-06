@@ -1,15 +1,5 @@
 import Post from '../models/Post.js';
 
-// Get all posts
-// export const getAllPosts = async (req, res) => {
-//   try {
-//     const posts = await Post.find().populate('author', '_id username profileImage');
-//     res.status(200).json(posts);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error });
-//   }
-// };
-
 export const getAllPosts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
