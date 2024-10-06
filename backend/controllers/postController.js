@@ -43,15 +43,31 @@ export const getAllPosts = async (req, res) => {
 };
 
 
-
 export const getPostById = async (req, res) => {
   const { postId } = req.params;
   try {
-    const post = await Post.findById(postId).populate('author', '_id username profileImage');
-    if (!post) {
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+
+    const startIndex = (page - 1) * limit;
+
+    const totalPosts = await Post.countDocuments({ author: userId });
+
+    const posts = await Post.findById({ author: userId })
+      .sort({ createdAt: -1 })
+      .skip(startIndex)
+      .limit(limit);
+
+    if (!posts) {
       return res.status(404).json({ message: 'Post not found' });
     }
-    res.status(200).json(post);
+
+    res.status(200).json({
+      posts,
+      hasMore: (page * limit) < totalPosts,
+    });
+
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
