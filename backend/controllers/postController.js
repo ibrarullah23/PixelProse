@@ -1,14 +1,48 @@
 import Post from '../models/Post.js';
 
 // Get all posts
+// export const getAllPosts = async (req, res) => {
+//   try {
+//     const posts = await Post.find().populate('author', '_id username profileImage');
+//     res.status(200).json(posts);
+//   } catch (error) {
+//     res.status(500).json({ message: 'Server error', error });
+//   }
+// };
+
 export const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('author', '_id username profileImage');
-    res.status(200).json(posts);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 5;
+
+    const startIndex = (page - 1) * limit;
+
+    const totalPosts = await Post.countDocuments();
+
+    const posts = await Post.find()
+      .populate('author', '_id username profileImage')
+      .sort({ createdAt: -1 })
+      .skip(startIndex)
+      .limit(limit);
+
+    if (posts.length === 0) {
+      return res.status(200).json({
+        message: 'No more posts',
+        posts: [],
+        hasMore: false,
+      });
+    }
+
+    res.status(200).json({
+      posts,
+      hasMore: (page * limit) < totalPosts,
+    });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
 };
+
+
 
 export const getPostById = async (req, res) => {
   const { postId } = req.params;
