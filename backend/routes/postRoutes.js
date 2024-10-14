@@ -1,5 +1,5 @@
 import express from 'express';
-import { addNewPost, deletePost, getAllPosts, getPostById, updatePost } from '../controllers/postController.js';
+import { addNewPost, deletePost, getAllPosts, getPostById, getPostsByUserId, updatePost } from '../controllers/postController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
@@ -7,6 +7,8 @@ const router = express.Router();
 
 // Get all posts
 router.get('/', getAllPosts);
+router.get('/posts/:userId', getPostsByUserId);
+
 router.get('/:postId', getPostById);
 
 // Add new post
@@ -17,5 +19,6 @@ router.patch('/:postId', authMiddleware, updatePost);
 
 // Delete post
 router.delete('/:postId', authMiddleware, deletePost);
+
 
 export default router;

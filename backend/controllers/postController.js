@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Post from '../models/Post.js';
 
 export const getAllPosts = async (req, res) => {
@@ -19,32 +20,43 @@ export const getAllPosts = async (req, res) => {
       return res.status(200).json({
         message: 'No more posts',
         posts: [],
-        hasMore: false,
+        hasNext: false,
       });
     }
 
     res.status(200).json({
       posts,
-      hasMore: (page * limit) < totalPosts,
+      hasNext: (page * limit) < totalPosts,
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
 };
 
-
 export const getPostById = async (req, res) => {
   const { postId } = req.params;
   try {
+    const post = await Post.findById(postId).populate('author', '_id username profileImage');
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
 
+
+export const getPostsByUserId = async (req, res) => {
+  const { userId } = req.params;
+  try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
-
     const startIndex = (page - 1) * limit;
 
     const totalPosts = await Post.countDocuments({ author: userId });
 
-    const posts = await Post.findById({ author: userId })
+    const posts = await Post.find({ author: userId })
       .sort({ createdAt: -1 })
       .skip(startIndex)
       .limit(limit);
@@ -55,11 +67,12 @@ export const getPostById = async (req, res) => {
 
     res.status(200).json({
       posts,
-      hasMore: (page * limit) < totalPosts,
+      hasNext: (page * limit) < totalPosts,
     });
 
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
+    // res.status(500).json({ message: 'Server error', error });
+    res.status(501).json({ error });
   }
 };
 
