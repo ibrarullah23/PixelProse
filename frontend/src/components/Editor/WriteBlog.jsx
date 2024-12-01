@@ -23,8 +23,8 @@ const WriteBlog = () => {
     (blogData) => createBlog(blogData)
   );
 
-  const imgMutation = useMutation(() => { return image }, {
-  // const imgMutation = useMutation(uploadImageToCloudinary, {
+  // const imgMutation = useMutation(() => { return image }, {
+  const imgMutation = useMutation(uploadImageToCloudinary, {
     onSuccess: async (data) => {
       // console.log(data);
       // blogData.photo = data

@@ -44,3 +44,8 @@ export const deleteBlog = async (id) => {
     return data;
 };
 
+export const fetchHomeFeed = async ({pageParam = 1 , limit = 5}) => {
+    const data = await axios.get(`/api/post?page=${pageParam}&limit=${limit}`);
+    return data.data;
+};
+

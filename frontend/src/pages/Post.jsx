@@ -14,6 +14,7 @@ import Loader from '../components/Loader';
 const Post = () => {
     // const { id } = useParams();
     const id = "66d1a2b63e1d5aa7cd745369"
+    // const id = "670216603d48ad6e644001b7"
     const navigate = useNavigate()
 
     const auth = useContext(AuthContext)

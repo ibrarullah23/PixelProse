@@ -80,7 +80,7 @@ const Navbar = () => {
                             // onClick={() => setMenu(!menu)} 
                             >
                                 <img className='rounded-full sm:w-[32px] w-[26px] ' src="https://picsum.photos/40" alt="" />
-                                <p className='font-details hidden sm:block' >Username</p>
+                                <p className='font-details hidden sm:block' >{user.username}</p>
                                 {/* {menu && <Menu auth={user} />} */}
                             </div>}>
 

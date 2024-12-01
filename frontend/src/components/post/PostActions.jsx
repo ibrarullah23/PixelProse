@@ -42,7 +42,7 @@ const PostActions = ({ post }) => {
             {/* <LuMoreHorizontal className='select-none text-lg sm:text-xl' role='button' /> */}
 
             {
-                auth?.username === post?.data?.author?.username &&
+                auth && auth?.username === post?.data?.author?.username &&
                 <Dropdown buttonElement={<LuMoreHorizontal className='select-none text-lg sm:text-xl' role='button' />}>
                     <span><span className=' w-full ' onClick={() => { navigate('/post/edit/' + post.data._id) }} >Edit</span></span>
                     <span><span className=' w-full ' onClick={handelDelete} >Delete</span></span>

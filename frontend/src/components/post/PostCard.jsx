@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
   const {username} = useParams();
 
   return (
-  <div className='max-w-[430px] sm:max-w-[640px] select-none mx-auto'>
+  <div className=' w-[85vw] max-w-[430px] sm:max-w-[640px]   select-none mx-auto'>
     <div className=" sm:my-8 my-5" >
 
       <div className=" flex  gap-4 sm:gap-8 justify-between ">
@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
             <h1 className="text-base sm:text-xl md:text-2xl leading-5 theme-text font-title font-bold mb-2 ">
               {post.title}
             </h1>
-            <p className="text-xs md:text-base theme-gray font-details">{post.desc.slice(0, 70) + " ...Read more"}</p>
+            {/* <p className="text-xs md:text-base theme-gray font-details">{post.desc.slice(0, 70) + " ...Read more"}</p> */}
           </Link>
         </div>
 
