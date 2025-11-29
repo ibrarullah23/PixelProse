@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This is a fully functional blog website built using the MERN stack. It allows users to create, edit, delete, and read blogs with rich text editing. The project supports role-based authentication and image uploads using Cloudinary.
+This is a fully functional blog website built using the MERN stack. It allows users to create, edit, delete, and read blogs with rich text editing. The project supports role-based authentication and image uploads using Cloudinary..
 
 ## 🚀 Features
 
